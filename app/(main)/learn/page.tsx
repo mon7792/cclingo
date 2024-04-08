@@ -4,6 +4,7 @@ import { Header } from "./header";
 import { UserProgress } from "@/components/user-progress";
 import { getUnits, getUserProgress } from "@/db/queries";
 import { redirect } from "next/navigation";
+import { Unit } from "./unit";
 
 
 export default async function LearnPage() {
@@ -24,21 +25,19 @@ export default async function LearnPage() {
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
+
         {units.map((unit) => (
-          <div key={unit.id}>
-            <h2>{unit.title}</h2>
-            {unit.lessons.map((lesson) => (
-              <div key={lesson.id}>
-                <h3>{lesson.title}</h3>
-                {lesson.challenges.map((challenge) => (
-                  <div key={challenge.id}>
-                    <h4>{challenge.question}</h4>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+          <Unit key={unit.id}
+            id={unit.id}
+            order={unit.order}
+            title={unit.title}
+            description={unit.description}
+            lessons={unit.lessons}
+            activeLesson={undefined}
+            activeLessonPercentage={0}
+          />
         ))}
+
       </FeedWrapper>
     </div>
   );
