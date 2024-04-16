@@ -38,6 +38,8 @@ const main = async () => {
 
         await db.insert(schema.challenges).values([
             {id: 1, lessonId: 1, type: "SELECT", question: 'Which one of these is the "the man"?', order: 1},
+            {id: 2, lessonId: 1, type: "ASSIST", question: '"the man"?', order: 2},
+            {id: 3, lessonId: 1, type: "SELECT", question: 'Which one of these is the "the women"?', order: 3},
         ]);
 
         await db.insert(schema.challengeOptions).values([
@@ -45,6 +47,16 @@ const main = async () => {
             {id: 2, challengeId: 1, text: "la mujer", imageSrc: "/woman.svg", audioSrc: "/es_woman.mp3", correct: false},
             {id: 3, challengeId: 1, text: "el niño", imageSrc: "/boy.svg", audioSrc: "/es_boy.mp3", correct: false},
             {id: 4, challengeId: 1, text: "la niña", imageSrc: "/girl.svg", audioSrc: "/es_girl.mp3", correct: false},
+
+            {id: 5, challengeId: 2, text: "el hombre", imageSrc: "/man.svg", audioSrc: "/es_man.mp3",correct: true},
+            {id: 6, challengeId: 2, text: "la mujer", imageSrc: "/woman.svg", audioSrc: "/es_woman.mp3", correct: false},
+            {id: 7, challengeId: 2, text: "el niño", imageSrc: "/boy.svg", audioSrc: "/es_boy.mp3", correct: false},
+            {id: 8, challengeId: 2, text: "la niña", imageSrc: "/girl.svg", audioSrc: "/es_girl.mp3", correct: false},
+
+            {id: 9, challengeId: 3, text: "el hombre", imageSrc: "/man.svg", audioSrc: "/es_man.mp3",correct: false},
+            {id: 10, challengeId: 3, text: "la mujer", imageSrc: "/woman.svg", audioSrc: "/es_woman.mp3", correct: true},
+            {id: 11, challengeId: 3, text: "el niño", imageSrc: "/boy.svg", audioSrc: "/es_boy.mp3", correct: false},
+            {id: 12, challengeId: 3, text: "la niña", imageSrc: "/girl.svg", audioSrc: "/es_girl.mp3", correct: false},
         ]);
 
         console.log("Seeding database finished...");
